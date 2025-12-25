@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 StarTrack U</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/check.js"></script>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body class="auth-body">
+
+    <div class="login-card">
+        <h2>登录 StarTrack U</h2>
+
+        <!-- 使用 form 标签包裹，方便处理回车提交 -->
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label class="form-label">邮箱地址</label>
+                <input type="email" id="email" class="form-input" placeholder="输入您的邮箱" required>
+                <div id="emailMsg" class="validation-msg">
+                    <span class="msg-icon">!</span>
+                    <span class="text">无效的邮箱格式</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="password-row">
+                    <label class="form-label">密码</label>
+                    <a href="#" class="forgot-link">忘记密码？</a>
+                </div>
+                <input type="password" id="password" class="form-input" placeholder="输入您的密码" required>
+                <div id="passwordMsg" class="validation-msg">
+                    <span class="msg-icon">!</span>
+                    <span class="text">密码格式错误</span>
+                </div>
+            </div>
+
+            <button type="submit" id="loginBtn" class="btn-login">登录</button>
+        </form>
+
+        <div class="divider"></div>
+
+        <div class="social-login">
+            <!-- 使用 emoji 模拟微信图标，实际项目中可替换为 SVG 或 FontAwesome -->
+            <span>💬</span> 
+            <span>使用微信登录</span>
+        </div>
+
+        <div class="create-account">
+            新用户？ <a href="signup.html">创建一个账户</a>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+
+</body>
+</html>

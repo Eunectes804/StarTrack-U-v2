@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加入 StarTrack U</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/check.js"></script>
+    <link rel="stylesheet" href="css/signup.css">
+</head>
+<body class="auth-body">
+
+<div class="signup-container">
+    <h2>创建您的账户</h2>
+    <p class="subtitle">开启您的 StarTrack U 之旅</p>
+
+    <form id="signupForm" onsubmit="handleSignup(event)">
+        <div class="form-group">
+            <label for="email">邮箱地址</label>
+            <input type="email" id="email" placeholder="name@example.com" autocomplete="off">
+            <div id="emailMsg" class="validation-msg">
+                <span class="msg-icon">!</span>
+                <span class="text">无效的邮箱格式</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" placeholder="创建一个密码">
+            <div class="strength-meter" id="meter">
+                <div class="strength-bar" id="bar"></div>
+            </div>
+            <div id="passwordMsg" class="validation-msg">
+                <span class="msg-icon">!</span>
+                <span class="text">至少8个字符，包含一个数字</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">确认密码</label>
+            <input type="password" id="confirmPassword" placeholder="重复您的密码">
+            <div id="confirmMsg" class="validation-msg">
+                <span class="msg-icon">!</span>
+                <span class="text">密码不匹配</span>
+            </div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn-signup" disabled>创建账户</button>
+    </form>
+
+    <div class="footer-links">
+        已有账户？ <a href="login.html">登录</a>
+    </div>
+</div>
+
+<script src="js/signup.js"></script>
+
+</body>
+</html>

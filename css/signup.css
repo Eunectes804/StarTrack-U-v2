@@ -1,0 +1,60 @@
+/* --- 1. 布局 Layout --- */
+h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+p.subtitle {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* --- 2. 组件 Components --- */
+/* 验证提示 */
+.validation-msg {
+    font-size: 12px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.2s;
+    pointer-events: none;
+}
+.validation-msg.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.msg-icon {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+}
+.error { color: #ff4d4d; }
+.error .msg-icon { background: #ff4d4d; color: #fff; }
+.valid { color: #b6ff3b; }
+.valid .msg-icon { background: #b6ff3b; color: #000; }
+
+/* 密码强度条 */
+.strength-meter {
+    height: 4px;
+    background: #444;
+    margin-top: 10px;
+    border-radius: 2px;
+    overflow: hidden;
+    display: none;
+}
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: all 0.3s;
+}

@@ -1,0 +1,104 @@
+/* --- 1. 布局系统 --- */
+.grid {
+  display: grid; grid-template-columns: 280px 1fr 280px; gap: 20px;
+  max-width: 1400px; margin: 0 auto; padding: 24px;
+  transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.grid.sidebar-hidden { grid-template-columns: 0 1fr 280px; }
+.grid.sidebar-hidden > *:first-child { display: none; }
+
+/* --- 2. 组件样式 --- */
+.title { font-size: 15px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+
+/* 成员列表 (横向滚动) */
+.member-row { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 15px; }
+.m-card { text-align: center; min-width: 85px; }
+.m-avatar { 
+  width: 64px; height: 64px; border-radius: 50%; 
+  border: 2px solid var(--border); background: var(--placeholder-bg); 
+  margin-bottom: 8px; transition: 0.3s; 
+}
+.m-card:hover .m-avatar { border-color: var(--accent); transform: scale(1.05); }
+.m-name { font-size: 12px; color: var(--muted); font-weight: 600; }
+
+/* 任务发布表单 */
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+select, textarea, input[type="text"] {
+  background: var(--input-bg); border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px; color: var(--text); outline: none; transition: 0.2s; width: 100%;
+}
+select:focus, textarea:focus, input[type="text"]:focus { border-color: var(--accent-2); }
+
+.btn-post { 
+  background: var(--accent); color: #000; border: none; padding: 14px; 
+  border-radius: 12px; font-weight: 800; cursor: pointer; margin-top: 10px;
+  transition: transform 0.2s;
+}
+.btn-post:hover { transform: translateY(-2px); }
+
+/* 历史记录项 */
+.hist-item { 
+  padding: 14px; border-radius: 12px; background: var(--panel-2); 
+  border: 1px solid var(--border); margin-top: 10px; 
+  font-size: 13px; line-height: 1.6; animation: fadeIn 0.3s;
+}
+.hist-item b { color: var(--accent-2); }
+
+/* 时间轴 (Timeline) */
+.timeline { position: relative; padding-left: 20px; border-left: 2px solid var(--border); margin-left: 10px; margin-top: 10px; }
+.tl-item { position: relative; margin-bottom: 24px; padding-left: 20px; }
+.tl-item::before {
+  content: ''; position: absolute; left: -26px; top: 5px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--accent);
+}
+.tl-date { font-size: 12px; font-weight: 800; color: var(--accent-2); margin-bottom: 4px; }
+.tl-title { font-size: 14px; font-weight: 700; color: var(--text); }
+.tl-desc { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+/* 成就徽章 */
+.achieve-badge {
+  aspect-ratio: 1; background: var(--panel-2); border: 1px solid var(--border);
+  border-radius: 8px; display: grid; place-items: center; font-size: 20px;
+  cursor: help; transition: 0.2s;
+}
+.achieve-badge:hover { border-color: var(--accent); background: rgba(182, 255, 59, 0.1); transform: scale(1.1); }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- 3. 移动端适配 --- */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr; /* Stack everything */
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  /* Hide the right sidebar or move it? 
+     The grid was 280px 1fr 280px. 
+     The first child is aside (Team Status).
+     The second is main (Members, Tasks).
+     The third... wait, let's check group.html again.
+  */
+}
+
+@media (max-width: 768px) {
+  .member-row {
+    gap: 10px;
+  }
+  .m-avatar {
+    width: 50px;
+    height: 50px;
+  }
+  .m-card {
+    min-width: 70px;
+  }
+  
+  .input-row {
+    grid-template-columns: 1fr; /* Stack inputs */
+  }
+  
+  .title {
+    font-size: 14px;
+  }
+}

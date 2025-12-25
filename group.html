@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StarTrack U - 团队</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/theme.js"></script>
+  <script src="js/database.js"></script>
+  <link rel="stylesheet" href="css/group.css">
+</head>
+<body>
+
+<div class="grid">
+  <aside style="display: flex; flex-direction: column; gap: 20px;">
+    <div class="card">
+      <div class="title">团队状态</div>
+      <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+        <span style="color:var(--muted); font-size:12px;">今日整体进度</span>
+        <span style="color:var(--accent); font-weight:bold;">85%</span>
+      </div>
+      <div style="height:6px; background:var(--border); border-radius:3px; overflow:hidden; margin-bottom:15px;">
+        <div style="width:85%; height:100%; background:var(--accent);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:32px; height:32px; background:rgba(255,77,77,0.1); color:var(--danger); border-radius:8px; display:grid; place-items:center;">🔥</div>
+        <div>
+          <div style="font-size:18px; font-weight:800;">128 天</div>
+          <div style="font-size:11px; color:var(--muted);">连续打卡</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">团队格言</div>
+      <p style="color: var(--muted); font-size: 14px; line-height: 1.7;">"共同编码，共同成长。追踪星际进化的轨迹。"</p>
+    </div>
+    <div class="card">
+      <div class="title">成就</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+        <div class="achieve-badge" title="算法新星">🏆</div>
+        <div class="achieve-badge" title="百题斩">⚔️</div>
+        <div class="achieve-badge" title="全勤团队">📅</div>
+        <div class="achieve-badge" title="夜猫子">🌙</div>
+        <div class="achieve-badge" title="代码诗人">✍️</div>
+        <div class="achieve-badge" title="Bug猎手">🐛</div>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="member-row">
+      <div class="m-card"><div class="m-avatar" style="background-image: url('resources/photo/t1.png'); background-size: cover; background-position: center;"></div><div class="m-name">Zhang Haochen</div></div>
+      <div class="m-card"><div class="m-avatar" style="background-image: url('resources/photo/t2.png'); background-size: cover; background-position: center;"></div><div class="m-name">Li Haoxuan</div></div>
+      <div class="m-card"><div class="m-avatar" style="background-image: url('resources/photo/t3.png'); background-size: cover; background-position: center;"></div><div class="m-name">Wu Kexian</div></div>
+      <div class="m-card" onclick="alert('邀请链接已生成，快去分享给队友吧！')" style="cursor: pointer;">
+        <div class="m-avatar" style="display: grid; place-items: center; background: var(--panel-2); color: var(--muted); font-size: 28px; border: 2px dashed var(--border);">+</div>
+        <div class="m-name" style="color: var(--accent); line-height: 1.3;">添加新成员<br>点击这里</div>
+      </div>
+    </div>
+
+    <div id="hist" style="margin-bottom:20px;">
+       <div class="hist-item"><b>公告</b>: 蓝桥杯备战已开始。请更新您的计划进度。<br><small style="color:#555">2小时前</small></div>
+    </div>
+
+    <div class="card">
+      <div class="title" style="display:flex; justify-content:space-between; align-items:center;">
+        <span>团队管理</span>
+        <select id="manageSelect" onchange="switchManageMode()" style="width:auto; padding:4px 8px; font-size:12px;">
+          <option value="task">发布团队任务</option>
+          <option value="roadmap">设置团队路线图</option>
+          <option value="info">修改团队信息</option>
+        </select>
+      </div>
+
+      <!-- 1. 发布任务 -->
+      <div id="mode-task">
+        <div class="input-row">
+          <select><option>发送给: 所有成员</option><option>发送给: 核心成员</option><option>发送给: 新人组</option></select>
+          <select><option>类型: 算法竞赛</option><option>类型: 项目开发</option><option>类型: 论文研读</option></select>
+        </div>
+        <div class="input-row">
+          <input type="text" placeholder="截止日期 (YYYY-MM-DD)" style="background:var(--input-bg); border:1px solid var(--border); padding:12px; border-radius:12px; color:var(--text);">
+          <select><option>优先级: P1 高</option><option>优先级: P2 中</option><option>优先级: P3 低</option></select>
+        </div>
+        <input type="text" placeholder="关联链接 (如: 题目集 URL)" style="width:100%; background:var(--input-bg); border:1px solid var(--border); padding:12px; border-radius:12px; color:var(--text); margin-bottom:10px;">
+        <textarea rows="4" id="taskMsg" placeholder="描述任务目标..."></textarea>
+        <div style="display:flex; align-items:center; gap:10px; margin-top:10px; margin-bottom:10px;">
+            <input type="checkbox" id="notifyEmail" checked> <label for="notifyEmail" style="font-size:12px; color:var(--muted);">邮件通知所有成员</label>
+        </div>
+        <button class="btn-post" style="width:100%" onclick="postT()">发布任务</button>
+      </div>
+
+      <!-- 2. 设置路线图 -->
+      <div id="mode-roadmap" style="display:none;">
+        <div class="input-row">
+          <input type="text" id="roadmapDate" placeholder="时间节点 (如: 2025-05)" style="background:var(--input-bg); border:1px solid var(--border); padding:12px; border-radius:12px; color:var(--text);">
+          <select id="roadmapStatus"><option value="planned">状态: 计划中</option><option value="in-progress">状态: 进行中</option><option value="done">状态: 已完成</option></select>
+        </div>
+        <input type="text" id="roadmapTitle" placeholder="里程碑标题 (如: 获得 ICPC 区域赛银牌)" style="width:100%; background:var(--input-bg); border:1px solid var(--border); padding:12px; border-radius:12px; color:var(--text); margin-bottom:10px;">
+        <textarea rows="3" id="roadmapDesc" placeholder="关键结果 (KPI): 例如全员通过考核..." style="margin-bottom:10px;"></textarea>
+        <div style="margin-bottom:10px;">
+            <label style="font-size:12px; color:var(--muted);">负责人</label>
+            <div style="display:flex; gap:5px; margin-top:5px;">
+                <div class="avatar-circle" style="width:24px; height:24px; font-size:10px;">MY</div>
+                <div class="avatar-circle" style="width:24px; height:24px; font-size:10px; background:var(--border);">+</div>
+            </div>
+        </div>
+        <button class="btn-post" style="width:100%" onclick="addRoadmap()">添加里程碑</button>
+      </div>
+
+      <!-- 3. 修改信息 -->
+      <div id="mode-info" style="display:none;">
+        <div style="display:grid; grid-template-columns: 80px 1fr; gap:15px; margin-bottom:15px;">
+            <div style="width:80px; height:80px; background:var(--panel-2); border-radius:12px; border:1px dashed var(--border); display:grid; place-items:center; color:var(--muted); font-size:12px; cursor:pointer;">
+                上传<br>Logo
+            </div>
+            <div>
+                <div style="margin-bottom:10px;">
+                  <label style="font-size:12px; color:var(--muted); display:block; margin-bottom:5px;">团队名称</label>
+                  <input type="text" value="StarTrack U" style="width:100%; background:var(--input-bg); border:1px solid var(--border); padding:10px; border-radius:8px; color:var(--text);">
+                </div>
+                <div>
+                  <label style="font-size:12px; color:var(--muted); display:block; margin-bottom:5px;">标签 (逗号分隔)</label>
+                  <input type="text" value="ACM, 算法, 机器学习" style="width:100%; background:var(--input-bg); border:1px solid var(--border); padding:10px; border-radius:8px; color:var(--text);">
+                </div>
+            </div>
+        </div>
+        
+        <div style="margin-bottom:10px;">
+          <label style="font-size:12px; color:var(--muted); display:block; margin-bottom:5px;">团队公告 (置顶)</label>
+          <textarea rows="2" style="width:100%;">本周六晚 8 点进行 Codeforces 模拟赛，请准时参加。</textarea>
+        </div>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; padding:10px; background:var(--panel-2); border-radius:8px;">
+            <span style="font-size:13px;">招募状态</span>
+            <label class="switch" style="display:flex; align-items:center; gap:5px; cursor:pointer;">
+                <input type="checkbox" checked> <span style="font-size:12px; color:var(--accent);">开放申请</span>
+            </label>
+        </div>
+
+        <button class="btn-post" style="width:100%">保存设置</button>
+      </div>
+    </div>
+  </main>
+
+  <aside style="display: flex; flex-direction: column; gap: 20px;">
+    <div class="card" style="border-top: 4px solid var(--accent-2);">
+      <div class="title">团队近期目标</div>
+      <div style="font-size: 13px; margin-bottom: 8px;" id="currentGoalText"> 加载中... </div>
+      <div style="height: 8px; background: var(--placeholder-bg); border-radius: 10px;">
+        <div style="width: 77%; height: 100%; background: var(--accent-2); border-radius: 10px;"></div>
+      </div>
+      <div style="text-align: right; font-size: 11px; margin-top: 5px; color: var(--muted);">77% 已完成</div>
+    </div>
+
+    <div class="card">
+      <div class="title">2025 赛季路线图</div>
+      <div class="timeline" style="max-height: 400px; overflow-y: auto; padding-right: 5px;" id="roadmapList">
+        <!-- Loaded from DB -->
+      </div>
+    </div>
+    
+    <button onclick="window.top.location.href='index.html'" class="btn btn-outline" style="width: 100%; text-align: center; border-color: rgba(255, 77, 77, 0.3); background: rgba(255, 77, 77, 0.05); color: var(--danger); font-size: 12px; font-weight: 700; padding: 12px; border-radius: 12px; cursor: pointer;">退出团队</button>
+  </aside>
+</div>
+
+<script src="js/group.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StarTrack U - 分析</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/theme.js"></script>
+  <script src="js/database.js"></script>
+  <link rel="stylesheet" href="css/analytics.css">
+</head>
+<body>
+
+<div class="page">
+  <!-- 1. 核心指标概览 -->
+  <div class="stats-grid">
+    <div class="card">
+      <div class="stat-label">本周专注时长</div>
+      <div class="stat-value">42<span style="font-size:16px; color:var(--muted);">h</span> 15<span style="font-size:16px; color:var(--muted);">m</span></div>
+      <div class="stat-sub"><span class="trend-up">↑ 12%</span> 较上周</div>
+    </div>
+    <div class="card">
+      <div class="stat-label">已完成任务</div>
+      <div class="stat-value">28</div>
+      <div class="stat-sub">计划完成率 <span style="color:var(--accent-blue);">92%</span></div>
+    </div>
+    <div class="card">
+      <div class="stat-label">当前连胜</div>
+      <div class="stat-value">12 <span style="font-size:16px; color:var(--muted);">天</span></div>
+      <div class="stat-sub">历史最佳: 45 天</div>
+    </div>
+    <div class="card">
+      <div class="stat-label">团队排名</div>
+      <div class="stat-value">No. 2</div>
+      <div class="stat-sub">距第一名差 3 题</div>
+    </div>
+  </div>
+
+  <!-- 2. 核心图表区 -->
+  <div class="complex-grid">
+    <!-- 左侧：专注趋势 -->
+    <div class="card">
+      <div class="chart-header">
+        <div class="chart-title">专注力趋势分析</div>
+        <div class="chart-subtitle">过去 7 天的每日专注时长分布</div>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="focusTrendChart"></canvas>
+      </div>
+    </div>
+
+    <!-- 右侧：能力雷达 -->
+    <div class="card">
+      <div class="chart-header">
+        <div class="chart-title">能力维度评估</div>
+        <div class="chart-subtitle">个人 vs 团队平均</div>
+      </div>
+      <div class="canvas-wrapper">
+        <canvas id="radarChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 详细分析区 -->
+  <div class="tri-grid">
+    <!-- 任务分类 -->
+    <div class="card">
+      <div class="chart-header">
+        <div class="chart-title">任务类型分布</div>
+      </div>
+      <div class="canvas-wrapper" style="min-height: 200px;">
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </div>
+
+    <!-- 活跃热力图 (模拟 GitHub) -->
+    <div class="card" style="grid-column: span 2;">
+      <div class="chart-header">
+        <div class="chart-title">学习热力图</div>
+        <div class="chart-subtitle">过去 30 天的活跃度记录</div>
+      </div>
+      <div class="heatmap-grid" id="heatmap">
+        <!-- JS 生成格子 -->
+      </div>
+      <div style="display:flex; justify-content:flex-end; align-items:center; gap:5px; margin-top:10px; font-size:10px; color:var(--muted);">
+        <span>Less</span>
+        <div style="width:10px; height:10px; background:var(--panel-2); border-radius:2px;"></div>
+        <div style="width:10px; height:10px; background:rgba(182, 255, 59, 0.3); border-radius:2px;"></div>
+        <div style="width:10px; height:10px; background:rgba(182, 255, 59, 0.6); border-radius:2px;"></div>
+        <div style="width:10px; height:10px; background:var(--accent); border-radius:2px;"></div>
+        <span>More</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. AI 洞察 -->
+  <div class="analysis-box">
+    <div class="ai-badge">AI INSIGHTS</div>
+    <div class="insight-item">
+      <strong style="color:var(--text);">黄金时间段：</strong> 根据数据分析，您在 <span style="color:var(--accent);">19:00 - 22:00</span> 的专注效率最高，建议将高难度算法题安排在此时间段。
+    </div>
+    <div class="insight-item">
+      <strong style="color:var(--text);">偏科预警：</strong> 近期 <span style="color:var(--danger);">动态规划 (DP)</span> 类题目训练量不足 10%，建议下周增加相关训练比重。
+    </div>
+    <div class="insight-item">
+      <strong style="color:var(--text);">预测：</strong> 按照当前进度，您将在 <span style="color:var(--accent-blue);">12天后</span> 达成 "百题斩" 成就。
+    </div>
+  </div>
+</div>
+
+<script src="js/analytics.js"></script>
+</body>
+</html>

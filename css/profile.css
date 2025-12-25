@@ -1,0 +1,50 @@
+/* --- 1. 布局 Layout --- */
+.profile-container {
+    max-width: 600px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* --- 2. 组件 Components --- */
+/* 头部个人信息卡片 */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.big-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--panel-2);
+    border: 2px solid var(--accent);
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text);
+    box-shadow: 0 0 20px rgba(182, 255, 59, 0.2);
+}
+
+.user-info h2 { 
+    margin-bottom: 6px; 
+    font-size: 24px;
+}
+.user-info p { 
+    color: var(--muted); 
+    font-size: 14px; 
+}
+
+/* 输入框微调，适应深色背景 */
+.form-input-dark {
+    background: var(--panel-2);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+.form-input-dark:focus {
+    border-color: var(--accent);
+}

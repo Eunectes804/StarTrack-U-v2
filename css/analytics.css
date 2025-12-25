@@ -1,0 +1,84 @@
+/* --- 1. 页面布局 Layout --- */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.complex-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.tri-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 1100px) {
+    .complex-grid, .tri-grid { grid-template-columns: 1fr; }
+}
+
+/* --- 2. 组件 Components --- */
+/* 统计卡片 */
+.stat-label { color: var(--muted); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.stat-value { font-size: 28px; font-weight: 900; color: var(--text); letter-spacing: -1px; }
+.stat-sub { font-size: 12px; margin-top: 8px; color: #555; }
+.trend-up { color: var(--accent); font-weight: bold; }
+
+/* 图表容器 */
+.chart-header { margin-bottom: 24px; }
+.chart-title { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+.chart-subtitle { color: var(--muted); font-size: 12px; }
+.canvas-wrapper { position: relative; min-height: 300px; width: 100%; }
+
+/* AI 分析框 */
+.analysis-box {
+    background: rgba(80, 167, 255, 0.05);
+    border: 1px solid rgba(80, 167, 255, 0.2);
+    padding: 20px;
+    border-radius: 18px;
+}
+.ai-badge {
+    display: inline-block;
+    background: var(--accent-blue);
+    color: #000;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.insight-item {
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #ccc;
+    border-left: 2px solid var(--accent);
+    padding-left: 10px;
+}
+
+/* 热力图 */
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    gap: 4px;
+    margin-top: 20px;
+}
+.heat-cell {
+    aspect-ratio: 1;
+    border-radius: 3px;
+    background: var(--panel-2);
+    transition: 0.2s;
+}
+.heat-cell:hover { transform: scale(1.2); border: 1px solid var(--text); }

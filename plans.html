@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StarTrack U - 计划</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/theme.js"></script>
+  <script src="js/database.js"></script>
+  <link rel="stylesheet" href="css/plans.css">
+</head>
+<body>
+
+<div class="main-container">
+  <aside class="panel sidebar-left" style="display: flex; flex-direction: column;">
+    <div class="section-title">时间线 (周视图)</div>
+    <div style="flex: 1; overflow-y: auto; position: relative;" id="weekListContainer">
+        <ul class="plan-list" id="planList">
+          <!-- Dynamic Content -->
+        </ul>
+    </div>
+    <div style="padding-top: 10px; border-top: 1px solid var(--border); text-align: center;">
+        <button class="btn-tag" onclick="goToToday()" style="width: 100%;">回到本周</button>
+    </div>
+  </aside>
+
+  <main class="content-center">
+    <div class="schedule-table-container">
+      <table id="scheduleTable">
+        <thead>
+          <tr>
+            <th id="th-1">周一</th>
+            <th id="th-2">周二</th>
+            <th id="th-3">周三</th>
+            <th id="th-4">周四</th>
+            <th id="th-5">周五</th>
+            <th id="th-6">周六</th>
+            <th id="th-7">周日</th>
+          </tr>
+        </thead>
+        <tbody id="scheduleBody">
+          <!-- Dynamic Rows -->
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel add-task-section">
+      <div class="task-input-area">
+        <div style="font-weight:800; margin-bottom:10px; font-size:12px; color:var(--text-dim); text-transform:uppercase;">新目标</div>
+        <textarea id="taskInput" placeholder="在此输入任务详情..."></textarea>
+      </div>
+
+      <div class="controls-grid">
+        <div class="input-group">
+          <label>目标日</label>
+          <select id="daySelect">
+            <option value="1">第1天 - 周一</option>
+            <option value="2">第2天 - 周二</option>
+            <option value="3">第3天 - 周三</option>
+            <option value="4">第4天 - 周四</option>
+            <option value="5">第5天 - 周五</option>
+            <option value="6">第6天 - 周六</option>
+            <option value="7">第7天 - 周日</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>优先级</label>
+          <select id="prioritySelect">
+            <option value="P1">紧急且重要</option>
+            <option value="P2">紧急不重要</option>
+            <option value="P3">不紧急重要</option>
+            <option value="P4">不紧急不重要</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>时长</label>
+          <select id="expectedSelect">
+            <option value="30m">30 分钟</option>
+            <option value="45m">45 分钟</option>
+            <option value="1h">1 小时</option>
+            <option value="2h">2 小时</option>
+          </select>
+        </div>
+        <div></div> 
+        <button class="btn-generate" onclick="generateTask()">初始化任务</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="panel sidebar-right">
+    <div>
+      <div class="section-title">团队状态</div>
+      <p style="font-size:12px; color:var(--muted); margin-bottom:10px; padding-left: 4px;">点击可以观看其他人的公开计划</p>
+      <ul class="member-list" id="memberList">
+        <li>ZhangXu (在线)</li>
+        <li>LiHaoXuan (离开)</li>
+        <li>WangYi (忙碌)</li>
+      </ul>
+    </div>
+    <div>
+      <div class="section-title">标杆</div>
+      <ul class="member-list" id="excellentList">
+        <li>MaHuaten_Plan_A</li>
+        <li>Mayun_Alibaba_V2</li>
+      </ul>
+    </div>
+    <div class="bottom-link" onclick="window.location.href='analytics.html'">查看分析 →</div>
+    <div class="bottom-link" onclick="window.top.location.href='index.html'" style="margin-top: 10px; border-color: var(--border); color: var(--muted);">退出登录</div>
+  </aside>
+</div>
+
+<script src="js/plans.js"></script>
+</body>
+</html>

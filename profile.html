@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarTrack U - 个人资料</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/theme.js"></script>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+<div class="profile-container">
+    <!-- 1. 个人信息展示卡片 -->
+    <div class="card profile-header">
+        <div class="big-avatar" style="background-image: url('resources/photo/t1.png'); background-size: cover; background-position: center;"></div>
+        <div class="user-info">
+            <h2>我的资料</h2>
+            <p>学号: 20248888</p>
+            <p style="color: var(--accent-blue); margin-top: 4px; font-size: 12px;">等级 5 探索者</p>
+        </div>
+    </div>
+
+    <!-- 2. 编辑表单 -->
+    <div class="card">
+        <div class="section-title">编辑详情</div>
+        
+        <div class="form-group">
+            <label class="form-label">显示名称</label>
+            <input type="text" class="form-input form-input-dark" value="ZhuanZ1">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">邮箱地址</label>
+            <input type="email" class="form-input form-input-dark" value="student@startrack.edu">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">简介 / 格言</label>
+            <textarea class="form-input form-input-dark" rows="3" style="resize: none;">用代码编织通往星辰之路。</textarea>
+        </div>
+
+        <button class="btn btn-primary" onclick="saveProfile()">保存更改</button>
+    </div>
+
+    <!-- 3. 退出登录区域 -->
+    <div class="card" style="border-color: rgba(255, 77, 77, 0.3);">
+        <div class="section-title" style="color: var(--danger);">账户操作</div>
+        <p style="font-size: 13px; color: #888; margin-bottom: 15px;">在此设备上退出您的账户。</p>
+        <button class="btn btn-outline" onclick="window.top.location.href='index.html'" style="width: 100%; border-color: var(--danger); color: var(--danger);">退出登录</button>
+    </div>
+</div>
+
+<script src="js/profile.js"></script>
+
+</body>
+</html>

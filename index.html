@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarTrack U - 重塑你的大学生活</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <!-- 粒子特效容器 -->
+    <div id="particles-js"></div>
+
+    <!-- 顶部导航 -->
+    <header>
+        <a href="#" class="logo">StarTrack U</a>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <a href="login.html" class="login-btn-top">登录</a>
+        </div>
+    </header>
+
+    <!-- Hero 区域 -->
+    <section class="hero-section">
+        <h1 class="hero-title">重新定义你的大学生活</h1>
+        <p class="hero-subtitle">与我们一起规划、追踪、成长</p>
+        <a href="login.html" class="start-btn">开始使用</a>
+    </section>
+
+    <!-- 1. 任务追踪 (Task Tracking) -->
+    <section class="feature-section" style="background: linear-gradient(to bottom, #000000 0%, #1c1c1c 100%);">
+        <div class="feature-container">
+            <div class="feature-text">
+                <h2>任务追踪</h2>
+                <p>清晰管理每日待办，用番茄钟保持专注。</p>
+                <div class="how-to-card">
+                    <div class="how-to-title">如何使用</div>
+                    <div class="how-to-desc">点击“添加任务”，设定时间，开启专注模式。</div>
+                </div>
+            </div>
+            <div class="feature-visual">
+                <div class="icon-group">
+                    <div class="list-item-row"><div class="check-icon"><div class="check-mark check-1"></div></div><div class="bar bar-1"></div></div>
+                    <div class="list-item-row"><div class="check-icon"><div class="check-mark check-2"></div></div><div class="bar bar-2"></div></div>
+                    <div class="list-item-row"><div class="check-icon"><div class="dot-icon"></div></div><div class="bar bar-3"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 学业规划 (Academic Planning) - Reverse Layout -->
+    <section class="feature-section" style="background: linear-gradient(to bottom, #1c1c1c 0%, #000000 100%);">
+        <div class="feature-container reverse">
+            <div class="feature-text">
+                <h2>学业规划</h2>
+                <p>制定长期学习路线，可视化你的课程表。</p>
+                <div class="how-to-card" style="border-left-color: #a18cd1;">
+                    <div class="how-to-title" style="color: #a18cd1;">如何使用</div>
+                    <div class="how-to-desc">在“计划”页面导入课程，设置考试提醒与复习节点。</div>
+                </div>
+            </div>
+            <div class="feature-visual">
+                <div class="calendar-grid">
+                    <div class="cal-item"></div><div class="cal-item cal-active"></div><div class="cal-item"></div>
+                    <div class="cal-item"></div><div class="cal-item"></div><div class="cal-item"></div>
+                    <div class="cal-item cal-active"></div><div class="cal-item"></div><div class="cal-item cal-active"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 小组协作 (Group Collaboration) -->
+    <section class="feature-section" style="background: linear-gradient(to bottom, #000000 0%, #1c1c1c 100%);">
+        <div class="feature-container reverse">
+            <div class="feature-text">
+                <h2>小组协作</h2>
+                <p>寻找志同道合的伙伴，共同完成项目。</p>
+                <div class="how-to-card" style="border-left-color: #fbc2eb;">
+                    <div class="how-to-title" style="color: #fbc2eb;">如何使用</div>
+                    <div class="how-to-desc">创建或加入小组，实时讨论，共享文件与进度。</div>
+                </div>
+            </div>
+            <div class="feature-visual">
+                <div class="avatar-group">
+                    <div class="avatar av-1"></div>
+                    <div class="avatar av-2"></div>
+                    <div class="avatar av-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 数据分析 (Analytics) - Reverse Layout -->
+    <section class="feature-section" style="background: linear-gradient(to bottom, #1c1c1c 0%, #000000 100%);">
+        <div class="feature-container">
+            <div class="feature-text">
+                <h2>数据分析</h2>
+                <p>回顾你的学习历程，用数据驱动成长。</p>
+                <div class="how-to-card" style="border-left-color: #ff9a9e;">
+                    <div class="how-to-title" style="color: #ff9a9e;">如何使用</div>
+                    <div class="how-to-desc">查看周报与月报，分析专注时长与任务完成率。</div>
+                </div>
+            </div>
+            <div class="feature-visual">
+                <div class="chart-container">
+                    <div class="chart-bar cb-1"></div>
+                    <div class="chart-bar cb-2"></div>
+                    <div class="chart-bar cb-3"></div>
+                    <div class="chart-bar cb-4"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 引入粒子特效库 (CDN) -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- 粒子特效配置脚本 -->
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+/* --- 1. 布局 Layout --- */
+body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; }
+iframe { width: 100%; height: calc(100vh - var(--nav-height)); border: none; display: block; }
+
+/* --- 2. 组件 Components --- */
+.header-left {
+    display: flex; 
+    align-items: center; 
+    gap: 15px;
+}
+
+.btn-icon {
+    background: var(--panel-2); 
+    border: 1px solid var(--border); 
+    color: var(--text); 
+    border-radius: 8px; 
+    width: 36px; 
+    height: 36px; 
+    display: grid; 
+    place-items: center; 
+    cursor: pointer; 
+    transition: 0.2s;
+}
+.btn-icon:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.avatar-box {
+    cursor: pointer;
+}
+
+.btn-theme {
+    margin-left: 12px; 
+    background: transparent; 
+    border: 1px solid var(--border); 
+    color: var(--text); 
+    width: 36px; 
+    height: 36px; 
+    border-radius: 50%; 
+    display: grid; 
+    place-items: center; 
+    cursor: pointer; 
+    transition: 0.2s;
+}
+.btn-theme:hover {
+    border-color: var(--accent);
+}

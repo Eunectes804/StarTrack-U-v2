@@ -1,0 +1,292 @@
+/* --- 1. 核心变量系统 --- */
+:root {
+  --bg: #050505;
+  --panel: #0f0f0f;
+  --panel-2: #161616;
+  --border: #262626;
+  --border-active: #404040;
+  --text: #f2f2f2;
+  --text-dim: #666;
+  --muted: #888;
+  --accent: #b6ff3b;
+  --accent-glow: rgba(182, 255, 59, 0.15);
+  --accent-blue: #50a7ff;
+  --accent-2: #50a7ff; /* Alias for blue */
+  --danger: #ff4d4d;
+  --success: #50a7ff;
+  --nav-height: 65px;
+  --font-ui: "PingFang SC", "Heiti SC", "Microsoft YaHei", "SimHei", system-ui, sans-serif;
+  --radius-lg: 16px;
+  --radius-md: 8px;
+  
+  /* Landing Page Specific */
+  --hero-title: #FFFF00;
+  --hero-text: #ddd;
+
+  /* Component Specific */
+  --input-bg: #000000;
+  --table-bg: #080808;
+  --table-header: rgba(15, 15, 15, 0.95);
+  --table-border-color: #1a1a1a;
+  --task-card-bg: #1e1e1e;
+  --section-gradient: linear-gradient(180deg, var(--panel) 0%, #0a0a0a 100%);
+  --placeholder-bg: #1a1a1a;
+  --header-bg: rgba(5, 5, 5, 0.8);
+}
+
+/* --- 2. Light Mode Variables --- */
+:root.light-mode {
+  --bg: #f0f2f5;
+  --panel: #ffffff;
+  --panel-2: #f7f8fa;
+  --border: #e1e4e8;
+  --border-active: #d1d5db;
+  --text: #1f2937;
+  --text-dim: #4b5563;
+  --muted: #9ca3af;
+  --accent: #84cc16; /* Darker lime for light mode */
+  --accent-glow: rgba(132, 204, 22, 0.15);
+  --accent-blue: #2563eb;
+  --accent-2: #2563eb;
+  
+  /* Landing Page Specific Light */
+  --hero-title: #d97706;
+  --hero-text: #4b5563;
+
+  /* Component Specific Light */
+  --input-bg: #ffffff;
+  --table-bg: #ffffff;
+  --table-header: #f3f4f6;
+  --table-border-color: #e5e7eb;
+  --task-card-bg: #ffffff;
+  --section-gradient: linear-gradient(180deg, var(--panel) 0%, #e5e7eb 100%);
+  --placeholder-bg: #e5e7eb;
+  --header-bg: rgba(255, 255, 255, 0.8);
+}
+
+/* --- 3. 基础重置 (Reset) --- */
+* { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a { text-decoration: none !important; border-bottom: none !important; color: inherit; }
+
+/* --- 4. 滚动条样式 --- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
+
+/* --- 5. 顶部导航栏 (Header) --- */
+header {
+  height: var(--nav-height);
+  padding: 0 28px;
+  border-bottom: none;
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  position: sticky; top: 0; z-index: 1000;
+}
+.logo-box {
+  border: 1px solid var(--border); border-radius: 12px;
+  padding: 7px 16px; font-weight: 800; font-size: 15px;
+  letter-spacing: -0.5px; color: var(--text);
+  background: rgba(255,255,255,0.03);
+}
+/* --- 6. 导航与头像 (Navigation & Avatar) --- */
+.nav-menu { display: flex; gap: 10px; }
+.nav-item {
+  padding: 8px 16px; border-radius: 10px;
+  color: var(--muted); font-weight: 700; font-size: 14px;
+  transition: all 0.2s; border: 1px solid transparent;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-item:hover { color: var(--text); background: var(--panel-2); }
+.nav-item.active {
+  color: var(--text); background: rgba(80, 167, 255, 0.08);
+  border-color: rgba(80, 167, 255, 0.3);
+}
+.nav-item.active .icon { color: var(--accent-2); }
+
+.avatar-box, .avatar-circle {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  display: grid; place-items: center;
+  font-weight: 800; font-size: 12px;
+  color: var(--text);
+  transition: all 0.2s;
+}
+.avatar-box:hover, .avatar-circle:hover {
+  border-color: var(--accent);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+/* Plans.html uses .avatar-circle with accent color text */
+.avatar-circle { color: var(--accent); background: linear-gradient(135deg, #222, #111); }
+
+/* --- 7. 通用组件 (Common Components) --- */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+  transition: border-color 0.3s;
+}
+.card:hover { border-color: #444; }
+
+.section-title {
+  font-size: 13px; font-weight: 800;
+  color: var(--muted); margin-bottom: 14px;
+  text-transform: uppercase; letter-spacing: 1.5px;
+}
+
+/* --- 8. 按钮 (Buttons) --- */
+.btn {
+  padding: 14px 28px; border-radius: 12px; border: none;
+  font-weight: 800; cursor: pointer; transition: 0.2s;
+  font-size: 14px; text-transform: uppercase;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+.btn-primary { background: var(--accent); color: #000; }
+.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+
+/* --- 9. 认证页面 (Auth Pages) --- */
+/* 注意：登录注册页的 body 需要 flex center，建议在页面内保留或添加 .auth-body 类 */
+.auth-body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.login-card, .signup-container {
+    background-color: #2c2c2c;
+    width: 400px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 1px solid #444;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+    position: relative;
+}
+
+.form-label, label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #ccc;
+    font-weight: 500;
+}
+
+/* 统一输入框样式 (Auth) */
+.form-input, .signup-container input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+}
+.form-input::placeholder, .signup-container input::placeholder { color: #999; }
+
+/* 统一按钮样式 (Auth) */
+.btn-login, .btn-signup {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #556B2F;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-login:hover, .btn-signup:hover:not(:disabled) { background-color: #6b8e23; }
+.btn-signup:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(0.5); }
+
+.footer-links, .create-account {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+}
+.footer-links a, .create-account a { color: #fff; text-decoration: none; }
+.footer-links a:hover, .create-account a:hover { text-decoration: underline; }
+
+/* --- 11. 移动端适配 (Mobile Responsive) --- */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 56px;
+  }
+
+  /* 顶部导航栏 */
+  header {
+    padding: 0 16px;
+  }
+  
+  .logo-box {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  /* 认证页面适配 */
+  .auth-box, .login-card, .signup-container {
+    width: 92%;
+    max-width: 100%;
+    padding: 24px;
+    margin: 0 auto;
+  }
+  
+  .auth-header h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Shell 页面底部导航适配 (main.html) */
+  .nav-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    padding: 8px 0;
+    justify-content: space-evenly;
+    z-index: 1001;
+    height: 60px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+  }
+
+  .nav-item {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 10px;
+    padding: 4px;
+    background: transparent !important;
+    border: none !important;
+  }
+  
+  /* 调整 iframe 高度，留出底部导航空间 */
+  #app-frame {
+    height: calc(100vh - var(--nav-height) - 60px) !important;
+  }
+}
