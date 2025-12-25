@@ -30,26 +30,8 @@
 ## 🚀 快速开始
 
 ### 在线访问
-访问 GitHub Pages: [https://your-username.github.io/your-repo-name](https://your-username.github.io/your-repo-name)
+访问 GitHub Pages: [(https://github.com/Eunectes804/StarTrack-U-v2))]
 
-### 本地运行
-1. **克隆项目**
-   ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
-   ```
-
-2. **启动应用**
-   - 直接在浏览器中打开 `index.html`
-   - 或使用本地服务器：
-     ```bash
-     # 使用 Python 3
-     python -m http.server 8000
-     
-     # 或使用 Node.js
-     npx http-server
-     ```
-   - 访问 `http://localhost:8000`
 
 ## 📖 使用指南
 
